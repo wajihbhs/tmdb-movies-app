@@ -1,22 +1,30 @@
-import type { Vehicle } from "~/types/vehicle";
-import type { Response } from "~/types/response";
-import { useNuxtApp } from "#app";
-import { transformKeysToCamelCase } from "~/utils/formatters";
+import type { MovieResponse } from '~/types/movieResponse'
+import type { MovieFilters } from '~/types/movieFilters'
 
-export const fetchVehicles = async (): Promise<Vehicle[]> => {
-  const { $axios } = useNuxtApp();
-
-  try {
-    const response = await $axios.get<Response>("/");
-
-    if (!response.data || !Array.isArray(response.data.results)) {
-      throw new Error("Invalid API response structure.");
-    }
-    return response.data.results.map(
-      (item) => transformKeysToCamelCase(item) as unknown as Vehicle
-    );
-  } catch (error) {
-    console.error("Error fetching vehicles:", error);
-    return [];
+export const fetchMoviesWithFilters = async (
+    filters: MovieFilters,
+    page = 1
+): Promise<MovieResponse> => {
+  const { $axios } = useNuxtApp()
+  const config = useRuntimeConfig()
+  const params: Record<string, any> = {
+    page,
+    api_key: config.public.TMDB_API_KEY
   }
-};
+
+  // Si une recherche est active, on utilise /search/movie
+  if (filters.query?.trim()) {
+    params.query = filters.query.trim()
+    const response = await $axios.get<MovieResponse>('/search/movie', { params })
+    return response.data
+  }
+
+  // Sinon on utilise /discover/movie avec les autres filtres
+  if (filters.sortBy) params.sort_by = filters.sortBy
+  if (filters.voteAverage) params['vote_average.gte'] = filters.voteAverage
+  if (filters.releaseYear) params['primary_release_year'] = filters.releaseYear
+  if (filters.language) params.with_original_language = filters.language
+
+  const response = await $axios.get<MovieResponse>('/discover/movie', { params })
+  return response.data
+}
