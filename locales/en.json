@@ -1,0 +1,53 @@
+{
+  "home-title": "Home",
+  "home-description": "Welcome to Yescapa, your campervan rental platform.",
+
+  "vehicle-title": "Vehicle No.{id}",
+  "vehicle-description": "Details of vehicle No.{id} available on Yescapa.",
+
+  "welcome-message": "Welcome to Yescapa!",
+  "vehicle-list": "Vehicle Listings",
+  "price-per-day": "Price per day",
+  "currency": "Currency",
+  "location": "Location",
+  "view-details": "View Details",
+  "language-english": "English",
+  "language-french": "French",
+
+  "vehicle-type": "Vehicle Type",
+  "vehicle-beds": "Beds",
+  "vehicle-seats": "Seats",
+  "owner": "Owner",
+  "reviews": "Reviews",
+  "rating": "Rating",
+  "contact-owner": "Contact Owner",
+  "book-now": "Book Now",
+  "no-vehicles-available": "No vehicles available",
+
+  "filter-title": "Filters",
+  "filter-price": "Price Range",
+  "filter-type": "Vehicle Type",
+  "filter-seats": "Number of Seats",
+  "min-price": "Minimum price",
+  "max-price": "Maximum price",
+  "filter-beds": "Number of Beds",
+  "apply-filters": "Apply Filters",
+  "reset-filters": "Reset Filters",
+
+  "error-fetching-data": "Error fetching data, please try again later.",
+  "loading": "Loading...",
+
+  "travel-abroad": "Travel abroad allowed",
+  "km-limited": "Limited mileage",
+  "b-licence": "B Licence",
+  "pets-allowed": "Pets allowed",
+  "starting-from": "Starting from",
+
+  "insurance-title": "Insurance & Protection",
+  "insurance-included": "Full Coverage Insurance",
+  "insurance-description": "Your rental is covered by comprehensive insurance, protecting both the driver and the vehicle against damage, theft, and liability issues.",
+  "cancellation-policy": "Flexible Cancellation Policy",
+  "cancellation-description": "You can cancel your reservation free of charge up to 48 hours before departure. A refund is guaranteed under our cancellation policy.",
+  "verified-owners": "Verified Owners & Secure Payments",
+  "verified-description": "Each owner is thoroughly verified, and all transactions are securely processed through our payment system to ensure a risk-free experience."
+}

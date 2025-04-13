@@ -1,0 +1,50 @@
+{
+  "home-title": "Yescapa - Location de camping-cars",
+  "vehicle-title": "Véhicule N°{id}",
+
+  "welcome-message": "Bienvenue sur Yescapa !",
+  "vehicle-list": "Liste des véhicules",
+  "price-per-day": "Prix par jour",
+  "currency": "Devise",
+  "location": "Emplacement",
+  "view-details": "Voir les détails",
+  "language-english": "Anglais",
+  "language-french": "Français",
+
+  "vehicle-type": "Type de véhicule",
+  "vehicle-beds": "Lits",
+  "vehicle-seats": "Sièges",
+  "owner": "Propriétaire",
+  "reviews": "Avis",
+  "rating": "Note",
+  "contact-owner": "Contacter le propriétaire",
+  "book-now": "Réserver maintenant",
+  "no-vehicles-available": "Aucun véhicule disponible",
+
+  "filter-title": "Filtres",
+  "filter-price": "Plage de prix",
+  "min-price": "Prix minimum",
+  "max-price": "Prix maximum",
+  "filter-type": "Type de véhicule",
+  "filter-seats": "Nombre de sièges",
+  "filter-beds": "Nombre de lits",
+  "apply-filters": "Appliquer les filtres",
+  "reset-filters": "Réinitialiser les filtres",
+
+  "error-fetching-data": "Erreur lors du chargement des données, veuillez réessayer plus tard.",
+  "loading": "Chargement...",
+
+  "travel-abroad": "Voyage",
+  "km-limited": "Kilométrage limité",
+  "pets-allowed": "Animaux acceptés",
+  "b-licence": "Permis B",
+  "starting-from": "À partir de",
+
+  "insurance-title": "Assurance & Protection",
+  "insurance-included": "Assurance tous risques",
+  "insurance-description": "Votre location est couverte par une assurance complète qui protège à la fois le conducteur et le véhicule contre les dommages, le vol et les responsabilités.",
+  "cancellation-policy": "Politique d'annulation flexible",
+  "cancellation-description": "Annulez votre réservation sans frais jusqu'à 48 heures avant le départ. Un remboursement est garanti selon notre politique d'annulation.",
+  "verified-owners": "Propriétaires vérifiés & paiements sécurisés",
+  "verified-description": "Chaque propriétaire est soigneusement vérifié et toutes les transactions sont traitées en toute sécurité via notre système de paiement pour garantir une expérience sans risque."
+}
