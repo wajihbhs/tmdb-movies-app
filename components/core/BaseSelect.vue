@@ -1,20 +1,25 @@
+<template>
+  <v-select
+      v-bind="$attrs"
+      v-model="model"
+      :variant="variant"
+      density="compact"
+      hide-details
+      :items="items"
+  />
+</template>
+
 <script setup lang="ts">
-defineProps<{
-  modelValue: string | number | null;
-  options: { value: string | number | null; label: string }[];
+const props = defineProps<{
+  modelValue: string | number;
+  items: { title: string; value: string | number }[];
+  variant?: 'outlined' | 'filled' | 'solo' | 'plain';
 }>();
 
-const emit = defineEmits(["update:modelValue"]);
-</script>
+const emit = defineEmits(['update:modelValue']);
 
-<template>
-  <select
-    :value="modelValue ?? ''"
-    class="w-full p-2 border rounded"
-    @change="emit('update:modelValue', ($event.target as HTMLSelectElement).value || null)"
-  >
-    <option v-for="option in options" :key="option.value" :value="option.value ?? ''">
-      {{ option.label }}
-    </option>
-  </select>
-</template>
+const model = computed({
+  get: () => props.modelValue,
+  set: (value) => emit('update:modelValue', value)
+});
+</script>

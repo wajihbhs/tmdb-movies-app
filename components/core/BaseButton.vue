@@ -1,25 +1,23 @@
+<template>
+  <v-btn
+      v-bind="$attrs"
+      :block="block"
+      :color="color"
+      :variant="variant"
+      class="text-none"
+      @click="emit('click')"
+  >
+    <slot>{{ label }}</slot>
+  </v-btn>
+</template>
+
 <script setup lang="ts">
 defineProps<{
-  label: string;
-  type?: "button" | "submit" | "reset";
-  customClass?: string;
-  disabled?: boolean;
+  label?: string;
+  block?: boolean;
+  color?: string;
+  variant?: 'flat' | 'outlined' | 'tonal' | 'elevated' | 'text' | 'plain';
 }>();
 
-const emit = defineEmits(["click"]);
+const emit = defineEmits(['click']);
 </script>
-
-<template>
-  <button
-    :type="type || 'button'"
-    :class="[
-      'px-4 py-2 rounded transition duration-200 font-medium',
-      { 'opacity-50 cursor-not-allowed': disabled },
-      customClass || 'bg-blue-500 text-white hover:bg-blue-600', // Default style if none is provided
-    ]"
-    :disabled="disabled"
-    @click="emit('click')"
-  >
-    {{ label }}
-  </button>
-</template>

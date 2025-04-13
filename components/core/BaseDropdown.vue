@@ -1,29 +1,18 @@
 <script setup lang="ts">
-import { ref, watch } from "vue";
 
-const showDropdown = defineModel<boolean>();
-const dropdownRef = ref<HTMLElement | null>(null);
-
-const closeDropdown = (event: Event) => {
-  if (dropdownRef.value && !dropdownRef.value.contains(event.target as Node)) {
-    showDropdown.value = false;
-  }
-};
-
-watch(showDropdown, (newValue) => {
-  if (newValue) document.addEventListener("click", closeDropdown);
-  else document.removeEventListener("click", closeDropdown);
-});
+const showDropdown = defineModel<boolean>()
 </script>
 
 <template>
-  <div ref="dropdownRef" class="relative">
-    <slot name="trigger" />
-    <div
-      v-if="showDropdown"
-      class="absolute right-0 mt-2 w-32 bg-white border rounded-lg shadow-lg overflow-hidden"
-    >
+  <v-menu v-model="showDropdown" offset-y>
+    <template #activator="{ props }">
+      <div v-bind="props">
+        <slot name="trigger" />
+      </div>
+    </template>
+
+    <v-list class="pa-0">
       <slot name="content" />
-    </div>
-  </div>
+    </v-list>
+  </v-menu>
 </template>

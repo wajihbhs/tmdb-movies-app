@@ -1,19 +1,23 @@
-<script setup lang="ts">
-defineProps<{
-  modelValue: string | number | null;
-  type?: string;
-  placeholder?: string;
-}>();
-
-const emit = defineEmits(["update:modelValue"]);
-</script>
-
 <template>
-  <input
-    :value="modelValue"
-    :type="type || 'text'"
-    :placeholder="placeholder"
-    @input="emit('update:modelValue', ($event.target as HTMLInputElement).value)"
-    class="w-full p-2 border rounded"
+  <v-text-field
+      v-bind="$attrs"
+      v-model="model"
+      :variant="variant"
+      density="compact"
+      hide-details
   />
 </template>
+
+<script setup lang="ts">
+const props = defineProps<{
+  modelValue: string | number | null;
+  variant?: 'outlined' | 'filled' | 'solo' | 'plain';
+}>();
+
+const emit = defineEmits(['update:modelValue']);
+
+const model = computed({
+  get: () => props.modelValue,
+  set: (value) => emit('update:modelValue', value)
+});
+</script>
