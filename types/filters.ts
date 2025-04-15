@@ -1,4 +1,4 @@
-export interface MovieFilters {
+export interface Filters {
     query: string;
     sortBy: string;
     voteAverage: number;

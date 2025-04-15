@@ -78,19 +78,19 @@
 <script setup lang="ts">
 import { reactive, watch, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
-import type { MovieFilters } from '~/types/movieFilters'
+import type { Filters } from '~/types/filters'
 
 const props = defineProps<{
   modelValue: MovieFilters
 }>()
 
 const emit = defineEmits<{
-  (e: 'update:modelValue', value: MovieFilters): void
+  (e: 'update:modelValue', value: Filters): void
 }>()
 
 const { t } = useI18n()
 
-const localFilters = reactive<MovieFilters>({ ...props.modelValue })
+const localFilters = reactive<Filters>({ ...props.modelValue })
 
 const isSearchMode = computed(() => !!localFilters.query?.trim())
 
