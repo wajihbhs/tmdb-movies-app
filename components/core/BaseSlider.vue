@@ -1,12 +1,12 @@
 <template>
   <v-slider
-      v-bind="$attrs"
-      v-model="model"
-      :min="min"
-      :max="max"
-      :step="step"
-      color="primary"
-      hide-details
+    v-bind="$attrs"
+    v-model="model"
+    :min="min"
+    :max="max"
+    :step="step"
+    color="primary"
+    hide-details
   />
 </template>
 
@@ -18,10 +18,10 @@ const props = defineProps<{
   step?: number;
 }>();
 
-const emit = defineEmits(['update:modelValue']);
+const emit = defineEmits(["update:modelValue"]);
 
 const model = computed({
   get: () => props.modelValue,
-  set: (value) => emit('update:modelValue', value)
+  set: (value) => emit("update:modelValue", value),
 });
 </script>

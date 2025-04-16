@@ -1,10 +1,7 @@
 <template>
   <v-tooltip location="top" max-width="320">
     <template #activator="{ props }">
-      <div
-          v-bind="props"
-          class="text-sm text-gray-600 line-clamp-3"
-      >
+      <div v-bind="props" class="text-sm text-gray-600 line-clamp-3">
         {{ text }}
       </div>
     </template>
@@ -18,7 +15,7 @@
 
 <script setup lang="ts">
 defineProps<{
-  text: string
+  text: string;
 }>();
 </script>
 

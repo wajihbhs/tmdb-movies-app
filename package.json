@@ -13,6 +13,9 @@
   },
   "dependencies": {
     "@pinia/nuxt": "^0.10.1",
+    "@tinymce/tinymce-vue": "^6.1.0",
+    "@vuelidate/core": "^2.0.3",
+    "@vuelidate/validators": "^2.0.4",
     "@vueuse/core": "^13.1.0",
     "axios": "^1.8.1",
     "nuxt": "^3.15.4",
