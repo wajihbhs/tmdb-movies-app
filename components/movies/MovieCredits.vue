@@ -15,7 +15,7 @@ const topCast = computed(() => props.cast.slice(0, 6)); // top d'affiche 6 premi
 </script>
 
 <template>
-  <div class="mt-2 p-2">
+  <div class="mt-2">
     <div v-if="director" class="mb-4">
       <h1 class="text-xl font-bold mb-2">🎬 {{ $t("director") }}</h1>
       <p class="text-gray-700 font-weight-bold uppercase">{{ director.name }}</p>

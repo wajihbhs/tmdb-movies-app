@@ -12,7 +12,7 @@ const halfStar = props.movie.vote_average % 2 >= 1;
 </script>
 
 <template>
-  <div class="flex flex-col md:flex-row gap-6 p-2">
+  <div class="flex flex-col md:flex-row gap-6">
     <div class="w-full md:w-1/3">
       <core-base-image
         :src="$posterUrl(movie.poster_path)"
