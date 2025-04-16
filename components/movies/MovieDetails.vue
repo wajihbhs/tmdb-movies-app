@@ -31,12 +31,12 @@ const halfStar = props.movie.vote_average % 2 >= 1;
       <div class="flex items-center gap-2">
         <core-stars-rating :full-star="fullStar" :half-star="halfStar" />
         <span class="text-sm text-gray-600">
-          {{ movie.vote_average.toFixed(1) }} / 10 — {{ movie.vote_count }} votes
+          {{ movie.vote_average.toFixed(1) }} / 10 — {{ movie.vote_count }} {{ $t("votes") }}
         </span>
       </div>
 
       <div class="text-sm text-gray-600">
-        <span class="font-semibold">Date de sortie :</span>
+        <span class="font-semibold"> {{ $t("release-date") }}: </span>
         {{ movie.release_date }}
       </div>
 

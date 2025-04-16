@@ -5,6 +5,10 @@
   "movies-list": "Movies List",
   "see-details": "See more details",
   "no-more-results": "No more results to display",
+  "director": "Director",
+  "top-cast": "Top Cast",
+  "votes": "Votes",
+  "release-date": "Release Date",
   "languages": {
     "en": "English",
     "fr": "French",

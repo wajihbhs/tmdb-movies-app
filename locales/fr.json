@@ -6,6 +6,10 @@
   "movies-list": "Liste des films",
   "see-details": "Voir les détails",
   "no-more-results": "Aucun autre résultat à afficher",
+  "director": "Réalisateur",
+  "top-cast": "Têtes d’affiche",
+  "votes": "Votes",
+  "release-date": "Date de sortie",
   "languages": {
     "en": "Anglais",
     "fr": "Français",

@@ -1,9 +1,10 @@
 import type { MovieResponse } from '~/types/movieResponse'
-import type { MovieFilters } from '~/types/movieFilters'
+import type { Filters } from '~/types/filters'
 import type {Movie} from "~/types/movie";
+import type {MovieCreditsResponse} from "~/types/credits";
 
 export const fetchMoviesWithFilters = async (
-    filters: MovieFilters,
+    filters: Filters,
     page = 1
 ): Promise<MovieResponse> => {
   const { $axios } = useNuxtApp()
@@ -38,5 +39,18 @@ export const getMovieDetails = async (id: string): Promise<Movie> => {
       api_key: config.public.TMDB_API_KEY,
     }
   })
+  return response.data
+}
+
+export const getMovieCredits = async (id: string): Promise<MovieCreditsResponse> => {
+  const { $axios } = useNuxtApp()
+  const config = useRuntimeConfig()
+
+  const response = await $axios.get(`/movie/${id}/credits`, {
+    params: {
+      api_key: config.public.TMDB_API_KEY,
+    }
+  })
+
   return response.data
 }

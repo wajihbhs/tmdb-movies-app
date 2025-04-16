@@ -1,8 +1,8 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import type { Movie } from '@/types/movie'
+import type { Filters } from '~/types/filters'
 import { fetchMoviesWithFilters } from '@/services/movieService'
-import type { MovieFilters } from '~/types/movieFilters'
 import type { MovieResponse } from '~/types/movieResponse'
 
 export const useMovieStore = defineStore('movieStore', () => {
@@ -11,9 +11,9 @@ export const useMovieStore = defineStore('movieStore', () => {
   const totalPages = ref(1)
   const isLoading = ref(false)
   const hasError = ref(false)
-  const endReached = ref(false) // ← 🔥 NEW
+  const endReached = ref(false)
 
-  const currentFilters = ref<MovieFilters>({
+  const currentFilters = ref<Filters>({
     query: '',
     sortBy: 'popularity.desc',
     voteAverage: 0,
@@ -54,7 +54,7 @@ export const useMovieStore = defineStore('movieStore', () => {
     }
   }
 
-  const resetAndFetch = async (filters: MovieFilters) => {
+  const resetAndFetch = async (filters: Filters) => {
     page.value = 1
     totalPages.value = 1
     endReached.value = false

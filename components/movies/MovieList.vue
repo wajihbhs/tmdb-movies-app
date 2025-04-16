@@ -4,13 +4,14 @@ import { useInfiniteMoviesObserver } from "~/composables/useInfiniteMoviesObserv
 import { useRouter } from "vue-router";
 import { computed } from "vue";
 import { useMovieStore } from "~/stores/movieStore";
+import MovieCardSkeleton from "~/components/movies/MovieCardSkeleton.vue";
 
 const { $posterUrl } = useNuxtApp();
 const { target } = useInfiniteMoviesObserver();
 const router = useRouter();
 const movieStore = useMovieStore();
 
-const props = defineProps<{
+defineProps<{
   movies: Movie[];
   isLoading: boolean;
 }>();
@@ -52,7 +53,7 @@ const skeletonCount = computed(() => 6);
         sm="6"
         md="4"
       >
-        <movies-movie-card-skeleton />
+        <movie-card-skeleton />
       </v-col>
     </v-row>
 
