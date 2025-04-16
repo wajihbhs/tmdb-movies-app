@@ -6,11 +6,9 @@ import { useMovieStore } from '~/stores/movieStore';
 import MovieList from '~/components/movies/MovieList.vue';
 import MovieFilters from '~/components/movies/MovieFilters.vue';
 import { useDebouncedWatch } from '~/composables/useDebouncedEffect';
-import { useInfiniteMoviesObserver } from '@/composables/useInfiniteMoviesObserver';
 
 const { t } = useI18n();
 const movieStore = useMovieStore();
-const { target } = useInfiniteMoviesObserver();
 
 const filters = ref<Filters>({
   query: '',
@@ -21,7 +19,7 @@ const filters = ref<Filters>({
 });
 
 useDebouncedWatch(filters, async (newFilters) => {
-  await movieStore.resetAndFetch(newFilters);
+   await movieStore.resetAndFetch(newFilters);
 }, 500);
 </script>
 
@@ -32,7 +30,7 @@ useDebouncedWatch(filters, async (newFilters) => {
     </div>
     <div class="bg-white rounded p-4 md:col-span-3">
       <h1 class="text-2xl font-bold mb-6">{{ t('movies-list') }}</h1>
-      <MovieList :movies="movieStore.movies" ref="target" />
+      <MovieList :is-loading="movieStore.isLoading" :movies="movieStore.movies" />
     </div>
   </div>
 </template>

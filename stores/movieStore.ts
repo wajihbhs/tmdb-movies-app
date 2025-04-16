@@ -22,7 +22,6 @@ export const useMovieStore = defineStore('movieStore', () => {
     hasError.value = false;
 
     try {
-      console.log('start from here')
       const data = await fetchMoviesWithFilters(currentFilters.value, page.value);
 
       if (page.value === 1) {

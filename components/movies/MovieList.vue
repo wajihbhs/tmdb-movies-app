@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import { ref } from 'vue';
 import type { Movie } from '~/types/movie';
+import {useInfiniteMoviesObserver} from "~/composables/useInfiniteMoviesObserver";
+
 const { $posterUrl } = useNuxtApp();
+const { target } = useInfiniteMoviesObserver();
 
 defineProps<{
   movies: Movie[]
 }>();
 
-const target = ref(null);
-defineExpose({ target });
 </script>
 
 <template>
