@@ -3,10 +3,12 @@ import type { Movie } from "~/types/movie";
 import { useInfiniteMoviesObserver } from "~/composables/useInfiniteMoviesObserver";
 import { useRouter } from "vue-router";
 import { computed } from "vue";
+import { useMovieStore } from "~/stores/movieStore";
 
 const { $posterUrl } = useNuxtApp();
 const { target } = useInfiniteMoviesObserver();
 const router = useRouter();
+const movieStore = useMovieStore();
 
 const props = defineProps<{
   movies: Movie[];
@@ -24,7 +26,12 @@ const skeletonCount = computed(() => 6);
           class="elevation-2 transition hover:scale-[1.01] hover:shadow-lg cursor-pointer"
           @click="router.push(`/movie/${movie.id}`)"
         >
-          <v-img :src="$posterUrl(movie.poster_path)" :alt="movie.title" height="300px" cover />
+          <core-base-image
+            :src="$posterUrl(movie.poster_path)"
+            :alt="movie.title"
+            height="300px"
+            cover
+          />
           <v-card-title class="text-h6">
             {{ movie.title }}
           </v-card-title>
@@ -49,6 +56,10 @@ const skeletonCount = computed(() => 6);
       </v-col>
     </v-row>
 
-    <div ref="target" class="h-10"></div>
+    <div ref="target" class="h-10" />
+
+    <div v-if="movieStore.endReached" class="text-center text-sm text-gray-400 my-4">
+      {{ $t("no-more-results") }}
+    </div>
   </div>
 </template>

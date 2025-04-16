@@ -16,7 +16,7 @@ const changeLanguage = (lang: string) => {
   <header class="bg-white shadow-md py-4 sticky top-0 w-full z-50">
     <div class="container mx-auto flex justify-between items-center px-4">
       <NuxtLink to="/">
-        <core-base-image :src="Logo" alt="HelloCSE Logo" class="h-10" />
+        <img :src="Logo" alt="HelloCSE Logo" class="h-10" />
       </NuxtLink>
       <core-base-dropdown v-model="showDropdown">
         <template #trigger>

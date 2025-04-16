@@ -1,5 +1,6 @@
 import type { MovieResponse } from '~/types/movieResponse'
 import type { MovieFilters } from '~/types/movieFilters'
+import type {Movie} from "~/types/movie";
 
 export const fetchMoviesWithFilters = async (
     filters: MovieFilters,
@@ -26,5 +27,16 @@ export const fetchMoviesWithFilters = async (
   if (filters.language) params.with_original_language = filters.language
 
   const response = await $axios.get<MovieResponse>('/discover/movie', { params })
+  return response.data
+}
+
+export const getMovieDetails = async (id: string): Promise<Movie> => {
+  const { $axios } = useNuxtApp()
+  const config = useRuntimeConfig()
+  const response = await $axios.get<Movie>(`/movie/${id}`, {
+    params: {
+      api_key: config.public.TMDB_API_KEY,
+    }
+  })
   return response.data
 }

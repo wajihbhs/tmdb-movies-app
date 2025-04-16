@@ -1,61 +1,82 @@
-import { defineStore } from 'pinia';
-import { ref } from 'vue';
-import type { Movie } from '@/types/movie';
-import { fetchMoviesWithFilters } from '@/services/movieService';
-import type {MovieFilters} from "~/types/movieFilters";
+import { defineStore } from 'pinia'
+import { ref, computed } from 'vue'
+import type { Movie } from '@/types/movie'
+import { fetchMoviesWithFilters } from '@/services/movieService'
+import type { MovieFilters } from '~/types/movieFilters'
+import type { MovieResponse } from '~/types/movieResponse'
 
 export const useMovieStore = defineStore('movieStore', () => {
-  const movies = ref<Movie[]>([]);
-  const page = ref(0);
-  const isLoading = ref(false);
-  const hasError = ref(false);
+  const movies = ref<Movie[]>([])
+  const page = ref(0)
+  const totalPages = ref(1)
+  const isLoading = ref(false)
+  const hasError = ref(false)
+  const endReached = ref(false) // ← 🔥 NEW
+
   const currentFilters = ref<MovieFilters>({
     query: '',
     sortBy: 'popularity.desc',
     voteAverage: 0,
     releaseYear: '',
     language: ''
-  });
+  })
+
+  const hasMorePages = computed(() =>
+      !endReached.value && page.value < totalPages.value
+  )
 
   const fetchMovies = async () => {
-    isLoading.value = true;
-    hasError.value = false;
+    isLoading.value = true
+    hasError.value = false
 
     try {
-      const data = await fetchMoviesWithFilters(currentFilters.value, page.value);
+      const data: MovieResponse = await fetchMoviesWithFilters(
+          currentFilters.value,
+          page.value
+      )
+
+      totalPages.value = data.total_pages
 
       if (page.value === 1) {
-        movies.value = data.results;
+        movies.value = data.results
       } else {
-        movies.value.push(...data.results);
+        movies.value.push(...data.results)
+      }
+
+      if (data.results.length === 0 || page.value >= data.total_pages) {
+        endReached.value = true
       }
     } catch (error) {
-      console.error('[useMoviesStore] fetchMovies error', error);
-      hasError.value = true;
+      console.error('[useMovieStore] fetchMovies error', error)
+      hasError.value = true
     } finally {
-      isLoading.value = false;
+      isLoading.value = false
     }
-  };
+  }
 
   const resetAndFetch = async (filters: MovieFilters) => {
-    page.value = 1;
-    currentFilters.value = { ...filters };
-    movies.value = [];
-    await fetchMovies();
-  };
+    page.value = 1
+    totalPages.value = 1
+    endReached.value = false
+    currentFilters.value = { ...filters }
+    movies.value = []
+    await fetchMovies()
+  }
 
   const loadNextPage = async () => {
-    if (isLoading.value) return;
-    page.value++;
-    await fetchMovies();
-  };
+    if (isLoading.value || !hasMorePages.value) return
+    page.value++
+    await fetchMovies()
+  }
 
   return {
     movies,
     isLoading,
     hasError,
     currentFilters,
+    hasMorePages,
+    endReached,
     resetAndFetch,
     loadNextPage
-  };
-});
+  }
+})
