@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-defineProps<{ average: number, voteCount:number }>();
+defineProps<{ average: number; voteCount: number }>();
 </script>
 
 <template>

@@ -7,9 +7,13 @@ import prettier from "eslint-plugin-prettier";
 
 export default [
   eslint.configs.recommended,
+
+  // Ignorer les dossiers de build
   {
-    ignores: ["node_modules/", "dist/", ".output/", ".nuxt/", "coverage/"],
+    ignores: ["node_modules/", "dist/", ".output/", ".nuxt/", "coverage/"]
   },
+
+  // Pour les fichiers .vue
   {
     files: ["**/*.vue"],
     languageOptions: {
@@ -19,44 +23,51 @@ export default [
         sourceType: "module",
         ecmaVersion: "latest",
         extraFileExtensions: [".vue"],
-      },
+        project: "./tsconfig.json"
+      }
     },
     plugins: {
       vue,
       prettier,
-      "@typescript-eslint": tseslint,
+      "@typescript-eslint": tseslint
     },
     rules: {
       "prettier/prettier": "error",
       "vue/multi-word-component-names": "off",
       "vue/no-multiple-template-root": "off",
-      "@typescript-eslint/no-explicit-any": "error",
+      "@typescript-eslint/no-explicit-any": "warn",
       "@typescript-eslint/explicit-module-boundary-types": "off",
       "@typescript-eslint/no-unused-vars": ["warn"],
       "no-unused-vars": "off",
       "no-console": ["warn", { allow: ["warn", "error"] }],
-      "no-undef": "off",
-    },
+      "no-undef": "off"
+    }
   },
+
+  // Pour les fichiers .ts et .js
   {
-    files: ["**/*.ts"],
+    files: ["**/*.{ts,js}"],
     languageOptions: {
       parser: tsParser,
       parserOptions: {
         project: "./tsconfig.json",
         sourceType: "module",
-        ecmaVersion: "latest",
-      },
+        ecmaVersion: "latest"
+      }
     },
     plugins: {
-      "@typescript-eslint": tseslint,
+      "@typescript-eslint": tseslint
     },
+    rules: {
+      "@typescript-eslint/no-explicit-any": "warn",
+      "@typescript-eslint/no-unused-vars": ["warn"],
+      "no-unused-vars": "off"
+    }
   },
+
+  // Global Nuxt/JS context
   {
-    name: "global-settings",
-    linterOptions: {
-      reportUnusedDisableDirectives: true,
-    },
+    name: "nuxt-globals",
     languageOptions: {
       globals: {
         console: "readonly",
@@ -64,8 +75,26 @@ export default [
         document: "readonly",
         process: "readonly",
         defineNuxtPlugin: "readonly",
+        definePageMeta: "readonly",
+        defineNuxtRouteMiddleware: "readonly",
         useRuntimeConfig: "readonly",
-      },
+        useNuxtApp: "readonly",
+        useRouter: "readonly",
+        useRoute: "readonly",
+        useAsyncData: "readonly",
+        useFetch: "readonly",
+        useState: "readonly",
+        ref: "readonly",
+        computed: "readonly",
+        onMounted: "readonly",
+        localStorage: "readonly",
+        crypto: "readonly",
+        $axios: "readonly",
+        navigateTo: "readonly"
+      }
     },
-  },
+    linterOptions: {
+      reportUnusedDisableDirectives: true
+    }
+  }
 ];

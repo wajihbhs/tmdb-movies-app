@@ -8,12 +8,12 @@ import MovieCredits from "~/components/movies/MovieCredits.vue";
 import MovieDetails from "~/components/movies/MovieDetails.vue";
 import MovieCommentForm from "~/components/movies/MovieCommentForm.vue";
 import MovieCommentList from "~/components/movies/MovieCommentList.vue";
-import {useMovieComments} from "~/composables/useMovieComments";
+import { useMovieComments } from "~/composables/useMovieComments";
 
 const route = useRoute();
 const isLoading = ref(true);
 const movie: Movie = ref<Movie | null>(null);
-const { comments, add } = useMovieComments(Number(route.params.id))
+const { comments, add } = useMovieComments(Number(route.params.id));
 const credits: MovieCreditsResponse = ref<MovieCreditsResponse | null>(null);
 
 onMounted(async () => {

@@ -15,12 +15,12 @@ const filters = ref<Filters>({
   sortBy: "popularity.desc",
   voteAverage: 0,
   releaseYear: "",
-  language: "",
+  language: ""
 });
 
 useDebouncedWatch(
   filters,
-  async (newFilters) => {
+  async newFilters => {
     await movieStore.resetAndFetch(newFilters);
   },
   500

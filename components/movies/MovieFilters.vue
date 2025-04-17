@@ -91,7 +91,7 @@ const isSearchMode = computed(() => !!localFilters.query?.trim());
 
 watch(
   localFilters,
-  (newVal) => {
+  newVal => {
     emit("update:modelValue", { ...newVal });
   },
   { deep: true }
@@ -112,7 +112,7 @@ const sortOptions = [
   { title: t("filters.ratingDesc"), value: "vote_average.desc" },
   { title: t("filters.ratingAsc"), value: "vote_average.asc" },
   { title: t("filters.releaseDateDesc"), value: "primary_release_date.desc" },
-  { title: t("filters.releaseDateAsc"), value: "primary_release_date.asc" },
+  { title: t("filters.releaseDateAsc"), value: "primary_release_date.asc" }
 ];
 
 const languageOptions = [
@@ -120,6 +120,6 @@ const languageOptions = [
   { title: t("languages.en"), value: "en" },
   { title: t("languages.fr"), value: "fr" },
   { title: t("languages.es"), value: "es" },
-  { title: t("languages.ja"), value: "ja" },
+  { title: t("languages.ja"), value: "ja" }
 ];
 </script>

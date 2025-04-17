@@ -1,4 +1,4 @@
-import { defineNuxtConfig } from 'nuxt/config'
+import { defineNuxtConfig } from "nuxt/config";
 
 export default defineNuxtConfig({
   devtools: { enabled: true },
@@ -9,21 +9,21 @@ export default defineNuxtConfig({
       TMDB_IMAGE_BASE: process.env.NUXT_PUBLIC_TMDB_IMAGE_BASE
     }
   },
-  modules: ['@nuxtjs/tailwindcss', '@pinia/nuxt', '@vueuse/nuxt'],
+  modules: ["@nuxtjs/tailwindcss", "@pinia/nuxt", "@vueuse/nuxt"],
   pages: true,
-  compatibilityDate: '2025-03-03',
-  css: ['vuetify/styles', '~/assets/css/tailwind.css'],
+  compatibilityDate: "2025-03-03",
+  css: ["vuetify/styles", "~/assets/css/tailwind.css"],
   build: {
-    transpile: ['vuetify']
+    transpile: ["vuetify"]
   },
   vite: {
     define: {
-      'process.env.DEBUG': false
+      "process.env.DEBUG": false
     }
   },
   nitro: {
     prerender: {
-      routes: ['/']
+      routes: ["/"]
     }
   }
-})
+});

@@ -9,7 +9,7 @@ const props = defineProps<{
 
 const { $posterUrl } = useNuxtApp();
 
-const director = computed(() => props.crew.find((person) => person.job === "Director"));
+const director = computed(() => props.crew.find(person => person.job === "Director"));
 
 const topCast = computed(() => props.cast.slice(0, 6)); // top d'affiche 6 premiers acteurs
 </script>

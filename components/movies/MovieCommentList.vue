@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import {format} from "date-fns";
-import type {MovieComment} from "~/types/movieComment";
+import { format } from "date-fns";
+import type { MovieComment } from "~/types/movieComment";
 import MovieVoteAverage from "~/components/movies/MovieVoteAverage.vue";
 
 defineProps<{ comments: MovieComment[] }>();
@@ -11,16 +11,13 @@ function formatDate(dateStr: string) {
 </script>
 <template>
   <div v-if="comments.length" class="space-y-4 mt-6">
-    <TransitionGroup
-        name="fade-slide"
-        tag="div"
-    >
+    <TransitionGroup name="fade-slide" tag="div">
       <div v-for="comment in comments" :key="comment.id" class="p-5 rounded border grey-lighten-2">
         <div class="flex justify-between items-center">
           <strong>{{ comment.username }}</strong>
           <span class="text-sm text-gray-500">{{ formatDate(comment.createdAt) }}</span>
         </div>
-        <div class="text-sm mt-2 prose max-w-full" v-html="comment.message"/>
+        <div class="text-sm mt-2 prose max-w-full" v-html="comment.message" />
         <div class="flex justify-end items-center gap-2">
           <movie-vote-average :average="comment.rating" :vote-count="0" />
         </div>

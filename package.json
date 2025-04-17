@@ -9,6 +9,7 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "lint": "eslint . --ext .vue,.ts --fix",
+    "lint:fix": "eslint . --ext .js,.ts,.vue --fix",
     "format": "prettier --write ."
   },
   "dependencies": {

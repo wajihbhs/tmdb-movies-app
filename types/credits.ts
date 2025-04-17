@@ -1,7 +1,7 @@
-import type {CastMember} from "~/types/castMember";
-import type {CrewMember} from "~/types/crewMember";
+import type { CastMember } from "~/types/castMember";
+import type { CrewMember } from "~/types/crewMember";
 
 export interface MovieCreditsResponse {
-    cast: CastMember[];
-    crew: CrewMember[];
+  cast: CastMember[];
+  crew: CrewMember[];
 }

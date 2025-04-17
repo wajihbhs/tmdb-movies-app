@@ -2,7 +2,7 @@
 import type { Movie } from "~/types/movie";
 import MovieVoteAverage from "~/components/movies/MovieVoteAverage.vue";
 
-const props = defineProps<{
+defineProps<{
   movie: Movie;
 }>();
 
