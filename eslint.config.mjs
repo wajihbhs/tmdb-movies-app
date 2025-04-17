@@ -8,12 +8,20 @@ import prettier from "eslint-plugin-prettier";
 export default [
   eslint.configs.recommended,
 
-  // Ignorer les dossiers de build
   {
-    ignores: ["node_modules/", "dist/", ".output/", ".nuxt/", "coverage/"]
+    ignores: [
+      "node_modules/",
+      "dist/",
+      ".output/",
+      ".nuxt/",
+      "coverage/",
+      "public/",
+      "*.config.{js,ts}",
+      "*.lock",
+      "*.json",
+      "*.d.ts"
+    ]
   },
-
-  // Pour les fichiers .vue
   {
     files: ["**/*.vue"],
     languageOptions: {
@@ -22,8 +30,7 @@ export default [
         parser: tsParser,
         sourceType: "module",
         ecmaVersion: "latest",
-        extraFileExtensions: [".vue"],
-        project: "./tsconfig.json"
+        extraFileExtensions: [".vue"]
       }
     },
     plugins: {
@@ -36,7 +43,6 @@ export default [
       "vue/multi-word-component-names": "off",
       "vue/no-multiple-template-root": "off",
       "@typescript-eslint/no-explicit-any": "warn",
-      "@typescript-eslint/explicit-module-boundary-types": "off",
       "@typescript-eslint/no-unused-vars": ["warn"],
       "no-unused-vars": "off",
       "no-console": ["warn", { allow: ["warn", "error"] }],
@@ -44,7 +50,6 @@ export default [
     }
   },
 
-  // Pour les fichiers .ts et .js
   {
     files: ["**/*.{ts,js}"],
     languageOptions: {
@@ -65,7 +70,7 @@ export default [
     }
   },
 
-  // Global Nuxt/JS context
+  // Global Nuxt helpers
   {
     name: "nuxt-globals",
     languageOptions: {
