@@ -1,14 +1,12 @@
 <script setup lang="ts">
 import type { Movie } from "~/types/movie";
+import MovieVoteAverage from "~/components/movies/MovieVoteAverage.vue";
 
 const props = defineProps<{
   movie: Movie;
 }>();
 
 const { $posterUrl } = useNuxtApp();
-
-const fullStar = Math.floor(props.movie.vote_average / 2);
-const halfStar = props.movie.vote_average % 2 >= 1;
 </script>
 
 <template>
@@ -29,10 +27,7 @@ const halfStar = props.movie.vote_average % 2 >= 1;
       </h1>
 
       <div class="flex items-center gap-2">
-        <core-stars-rating :full-star="fullStar" :half-star="halfStar" />
-        <span class="text-sm text-gray-600">
-          {{ movie.vote_average.toFixed(1) }} / 10 — {{ movie.vote_count }} {{ $t("votes") }}
-        </span>
+        <movie-vote-average :average="movie.vote_average" :vote-count="movie.vote_count" />
       </div>
 
       <div class="text-sm text-gray-600">

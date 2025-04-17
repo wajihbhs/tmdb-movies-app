@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import {format} from "date-fns";
 import type {MovieComment} from "~/types/movieComment";
+import MovieVoteAverage from "~/components/movies/MovieVoteAverage.vue";
 
 defineProps<{ comments: MovieComment[] }>();
 
@@ -20,6 +21,9 @@ function formatDate(dateStr: string) {
           <span class="text-sm text-gray-500">{{ formatDate(comment.createdAt) }}</span>
         </div>
         <div class="text-sm mt-2 prose max-w-full" v-html="comment.message"/>
+        <div class="flex justify-end items-center gap-2">
+          <movie-vote-average :average="comment.rating" :vote-count="0" />
+        </div>
       </div>
     </TransitionGroup>
   </div>
