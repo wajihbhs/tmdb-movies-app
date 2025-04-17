@@ -8,11 +8,12 @@ import MovieCredits from "~/components/movies/MovieCredits.vue";
 import MovieDetails from "~/components/movies/MovieDetails.vue";
 import MovieCommentForm from "~/components/movies/MovieCommentForm.vue";
 import MovieCommentList from "~/components/movies/MovieCommentList.vue";
+import {useMovieComments} from "~/composables/useMovieComments";
 
 const route = useRoute();
 const isLoading = ref(true);
-const commentListKey: number = ref(0);
 const movie: Movie = ref<Movie | null>(null);
+const { comments, add } = useMovieComments(Number(route.params.id))
 const credits: MovieCreditsResponse = ref<MovieCreditsResponse | null>(null);
 
 onMounted(async () => {
@@ -39,8 +40,8 @@ onMounted(async () => {
 
           <h2 class="text-xl font-bold mt-8 mb-2">{{ $t("comments.title") }}</h2>
 
-          <movie-comment-form :movie-id="movie.id" @refresh:comments="commentListKey++" />
-          <movie-comment-list :key="`refresh-key-${commentListKey}`" :movie-id="movie.id" />
+          <movie-comment-form :movie-id="movie.id" :add-comment="add" />
+          <movie-comment-list :comments="comments" />
         </v-container>
       </template>
     </v-card>

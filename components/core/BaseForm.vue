@@ -2,7 +2,7 @@
   <v-form @submit.prevent="handleSubmit" class="space-y-4" :class="customClass">
     <slot />
     <div class="flex justify-end pt-2">
-      <core-base-button type="submit" :disabled="v$?.$invalid" :label="$t('comments.submit')" />
+      <core-base-button type="submit" variant="elevated" color="primary" :disabled="v$?.$invalid" :label="$t('comments.submit')" />
     </div>
   </v-form>
 </template>

@@ -1,32 +1,33 @@
-import type {MovieComment} from "~/types/movieComment";
+import type { MovieComment } from '~/types/movieComment'
 
 const STORAGE_KEY = 'movie-comments'
 
-// TODO Composable is not reactive , comment list are not updated on add
-
 export function useMovieComments(movieId: number) {
-    const all = ref<MovieComment[]>([])
+    const comments = ref<MovieComment[]>([])
 
-    const load = () => {
-        const stored = localStorage.getItem(STORAGE_KEY)
-        all.value = stored ? JSON.parse(stored).filter((c: MovieComment) => c.movieId === movieId) : []
+    const syncFromStorage = () => {
+        const stored = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]') as MovieComment[]
+        comments.value = stored.filter(c => c.movieId === movieId)
     }
 
-    const add = (comment: Omit<MovieComment, 'id' | 'createdAt'>) => {
-        const current = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]')
-        const fullComment = {
-            ...comment,
+    const add = (data: Omit<MovieComment, 'id' | 'createdAt'>) => {
+        const stored = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]') as MovieComment[]
+
+        const newComment: MovieComment = {
+            ...data,
             id: crypto.randomUUID(),
             createdAt: new Date().toISOString()
         }
-        localStorage.setItem(STORAGE_KEY, JSON.stringify([...current, fullComment]))
-        load()
+
+        const updated = [...stored, newComment]
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(updated))
+        comments.value = updated.filter(c => c.movieId === movieId)
     }
 
-    onMounted(load)
+    onMounted(syncFromStorage)
 
     return {
-        comments: computed(() => [...all.value].sort((a, b) => +new Date(b.createdAt) - +new Date(a.createdAt))),
+        comments: computed(() => comments.value.sort((a, b) => +new Date(b.createdAt) - +new Date(a.createdAt))),
         add
     }
 }
