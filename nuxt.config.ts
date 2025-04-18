@@ -21,9 +21,14 @@ export default defineNuxtConfig({
       "process.env.DEBUG": false
     }
   },
+  ssr: true,
   nitro: {
+    preset: 'vercel',
     prerender: {
       routes: ["/"]
+    },
+    output: {
+      dir: '.output'
     }
   }
 });
