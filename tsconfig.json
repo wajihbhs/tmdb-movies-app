@@ -1,16 +1,29 @@
 {
-  "extends": "./.nuxt/tsconfig.json",
   "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
     "moduleResolution": "node",
+    "strict": true,
+    "baseUrl": ".",
     "paths": {
       "~/*": ["./*"],
       "@/*": ["./*"]
     },
-    "module": "ESNext",
-    "target": "ESNext",
-    "strict": true,
-    "types": ["@nuxt/schema", "@nuxt/types", "node"],
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
-  }
+    "jsx": "preserve",
+    "esModuleInterop": true,
+    "types": ["vite/client"]
+  },
+  "include": [
+    "components/**/*",
+    "composables/**/*",
+    "layouts/**/*",
+    "pages/**/*",
+    "plugins/**/*",
+    "types/**/*",
+    "validations/**/*",
+    "tests/**/*",
+    "tests/unit/**/*",
+    "tests/e2e/**/*",
+    "app.vue"
+  ]
 }

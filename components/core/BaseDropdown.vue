@@ -1,6 +1,5 @@
 <script setup lang="ts">
-
-const showDropdown = defineModel<boolean>()
+const showDropdown = defineModel<boolean>();
 </script>
 
 <template>

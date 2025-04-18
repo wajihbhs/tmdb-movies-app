@@ -5,7 +5,7 @@ import { useHead } from "nuxt/app";
 const { t } = useI18n();
 
 useHead({
-  title: t("home-title"),
+  title: t("home-title")
 });
 </script>
 
