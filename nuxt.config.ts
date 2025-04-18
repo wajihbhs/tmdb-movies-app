@@ -27,8 +27,5 @@ export default defineNuxtConfig({
     prerender: {
       routes: ["/"]
     },
-    output: {
-      dir: '.output'
-    }
   }
 });
