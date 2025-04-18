@@ -4,14 +4,32 @@
 
   "movies-title": "Liste des filmes",
   "movies-list": "Liste des films",
-
+  "see-details": "Voir les détails",
+  "no-more-results": "Aucun autre résultat à afficher",
+  "director": "Réalisateur",
+  "top-cast": "Têtes d’affiche",
+  "votes": "Votes",
+  "release-date": "Date de sortie",
   "languages": {
     "en": "Anglais",
     "fr": "Français",
     "es": "Espagnol",
     "ja": "Japonais"
   },
-
+  "comments": {
+    "title": "Commentaires",
+    "username": "Nom d'utilisateur",
+    "message": "Message",
+    "rating": "Note",
+    "submit": "Envoyer le commentaire",
+    "noComments": "Aucun commentaire pour ce film.",
+    "required": "Champ requis",
+    "alphaWithSpaces": "Lettres uniquement",
+    "alphaNumWithSpaces": "Lettres et chiffres uniquement",
+    "minLength": "Au moins {min} caractères",
+    "maxLength": "Au plus {max} caractères",
+    "between": "Note entre 1 et 10"
+  },
   "filters": {
     "title": "Filtres",
     "search": "Recherche",
@@ -31,4 +49,4 @@
     "reset": "Réinitialiser",
     "disabledWhenSearching": "Désactivé pendant la recherche par titre"
   }
- }
+}

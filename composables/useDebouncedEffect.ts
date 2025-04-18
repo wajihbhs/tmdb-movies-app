@@ -1,5 +1,5 @@
-import { watch, type WatchSource } from 'vue'
-import { useDebounceFn } from '@vueuse/core'
+import { watch, type WatchSource } from "vue";
+import { useDebounceFn } from "@vueuse/core";
 
 /**
  * Watch a source with debounce and trigger a callback
@@ -9,10 +9,10 @@ import { useDebounceFn } from '@vueuse/core'
  * @param delay - Debounce delay in ms (default: 300ms)
  */
 export function useDebouncedWatch<T>(
-    source: WatchSource<T>,
-    callback: (value: T) => void,
-    delay = 300
+  source: WatchSource<T>,
+  callback: (value: T) => void,
+  delay = 300
 ): void {
-    const debounced = useDebounceFn(callback, delay)
-    watch(source, (value) => debounced(value), { deep: true })
+  const debounced = useDebounceFn(callback, delay);
+  watch(source, value => debounced(value), { deep: true });
 }

@@ -3,6 +3,26 @@
   "home-description": "Welcome to HelloCSE gallery",
   "movies-title": "Film list",
   "movies-list": "Movies List",
+  "see-details": "See more details",
+  "no-more-results": "No more results to display",
+  "director": "Director",
+  "top-cast": "Top Cast",
+  "votes": "Votes",
+  "release-date": "Release Date",
+  "comments": {
+    "title": "Comments",
+    "username": "Username",
+    "message": "Message",
+    "rating": "Rating",
+    "submit": "Submit comment",
+    "noComments": "No comments for this movie.",
+    "required": "Required field",
+    "alphaWithSpaces": "Letters only",
+    "alphaNumOnlyWithSpaces": "Letters and numbers only",
+    "minLength": "At least {min} characters",
+    "maxLength": "At most {max} characters",
+    "ratingRange": "Rating between 1 and 10"
+  },
   "languages": {
     "en": "English",
     "fr": "French",
@@ -27,6 +47,5 @@
     "anyLanguage": "Any language",
     "reset": "Reset",
     "disabledWhenSearching": "Disabled on search using title"
-
   }
 }
