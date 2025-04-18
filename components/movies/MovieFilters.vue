@@ -9,7 +9,6 @@
         :label="t('filters.search')"
         :placeholder="t('filters.searchPlaceholder')"
       />
-
       <core-base-select
         v-model="localFilters.sortBy"
         :label="t('filters.sortBy')"
@@ -97,29 +96,33 @@ watch(
   { deep: true }
 );
 
-function reset() {
+const reset: void = () => {
   localFilters.query = "";
   localFilters.sortBy = "popularity.desc";
   localFilters.voteAverage = 0;
   localFilters.releaseYear = "";
   localFilters.language = "";
   emit("update:modelValue", { ...localFilters });
-}
+};
 
-const sortOptions = [
-  { title: t("filters.popularityDesc"), value: "popularity.desc" },
-  { title: t("filters.popularityAsc"), value: "popularity.asc" },
-  { title: t("filters.ratingDesc"), value: "vote_average.desc" },
-  { title: t("filters.ratingAsc"), value: "vote_average.asc" },
-  { title: t("filters.releaseDateDesc"), value: "primary_release_date.desc" },
-  { title: t("filters.releaseDateAsc"), value: "primary_release_date.asc" }
-];
+const sortOptions = computed(() => {
+  return [
+    { title: t("filters.popularityDesc"), value: "popularity.desc" },
+    { title: t("filters.popularityAsc"), value: "popularity.asc" },
+    { title: t("filters.ratingDesc"), value: "vote_average.desc" },
+    { title: t("filters.ratingAsc"), value: "vote_average.asc" },
+    { title: t("filters.releaseDateDesc"), value: "primary_release_date.desc" },
+    { title: t("filters.releaseDateAsc"), value: "primary_release_date.asc" }
+  ];
+});
 
-const languageOptions = [
-  { title: t("filters.anyLanguage"), value: "" },
-  { title: t("languages.en"), value: "en" },
-  { title: t("languages.fr"), value: "fr" },
-  { title: t("languages.es"), value: "es" },
-  { title: t("languages.ja"), value: "ja" }
-];
+const languageOptions = computed(() => {
+  return [
+    { title: t("filters.anyLanguage"), value: "" },
+    { title: t("languages.en"), value: "en" },
+    { title: t("languages.fr"), value: "fr" },
+    { title: t("languages.es"), value: "es" },
+    { title: t("languages.ja"), value: "ja" }
+  ];
+});
 </script>
