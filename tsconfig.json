@@ -21,6 +21,7 @@
     "plugins/**/*",
     "types/**/*",
     "validations/**/*",
+    "tests/**/*",
     "tests/unit/**/*",
     "tests/e2e/**/*",
     "app.vue"
