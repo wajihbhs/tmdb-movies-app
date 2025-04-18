@@ -12,8 +12,9 @@
     "lint:fix": "eslint . --ext .js,.ts,.vue --fix",
     "format": "prettier --write .",
     "test": "vitest",
-    "test:ui": "vitest --ui",
-    "test:watch": "vitest --watch"
+    "test:unit": "vitest run tests/unit",
+    "test:e2e": "vitest run tests/e2e",
+    "test:ui": "vitest --ui"
   },
   "dependencies": {
     "@pinia/nuxt": "^0.10.1",
@@ -36,10 +37,12 @@
     "@nuxt/schema": "^3.15.4",
     "@nuxt/types": "^2.18.1",
     "@nuxtjs/tailwindcss": "^6.13.1",
+    "@pinia/testing": "^1.0.1",
     "@playwright/test": "^1.51.0",
     "@types/node": "^22.13.10",
     "@typescript-eslint/eslint-plugin": "^8.26.0",
     "@typescript-eslint/parser": "^8.26.0",
+    "@vitejs/plugin-vue": "^5.2.3",
     "@vitest/ui": "^3.1.1",
     "@vue/test-utils": "^2.4.6",
     "@vueuse/nuxt": "^13.1.0",
